@@ -2,10 +2,10 @@ import pandas as pd
 import numpy as np
 
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Income Prediction\adult train.csv")
-# df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Titanic-Dataset.csv")
+df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Titanic-Dataset.csv")
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Fashion MNIST\fashion-mnist_train.csv")
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\creditcard.csv")
-df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\house_price.csv")
+# df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\house_price.csv")
 
 print(f"Number of Columns : {len(df.columns)}")
 print(f"Number of Rows : {len(df)}")
@@ -21,6 +21,12 @@ print()
 
 print(f"Catagorial Column : {cat_cols}")
 print(f"Numerical Column : {num_cols}")
+print()
+
+print(df.info())
+print()
+
+print(df.describe())
 print()
 
 Null_Values = [
@@ -43,12 +49,13 @@ Null_Values = [
 df = df.replace(Null_Values , np.nan)
 
 
-print(f"Null values for each  columns : \n{df.isnull().sum()}")
+print(f"Number of Null values for each  columns : \n{df.isnull().sum()}")
+print()
 
 
 ## Making Logic to detect problem type(classification or regression)
 
-target = "price"
+target = "Survived"
 
 total_rows = len(df)
 unique = df[target].nunique()

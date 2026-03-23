@@ -18,6 +18,12 @@ def analyze_basic(df) :
     print(f"Numerical Column : {num_cols}")
     print()
 
+    print(df.info())
+    print()
+
+    print(df.describe())
+    print()
+
     Null_Values = [
         "?" , 
         " ?",
@@ -41,6 +47,10 @@ def analyze_basic(df) :
 
 
 
+
+
+
+
 def analyze_ml(df , target) :
 
     print(f"Number of Columns : {len(df.columns)}")
@@ -57,6 +67,12 @@ def analyze_ml(df , target) :
 
     print(f"Catagorial Column : {cat_cols}")
     print(f"Numerical Column : {num_cols}")
+    print()
+
+    print(df.info())
+    print()
+
+    print(df.describe())
     print()
 
     Null_Values = [
