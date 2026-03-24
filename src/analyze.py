@@ -1,6 +1,39 @@
 import pandas as pd
 import numpy as np 
 
+
+def infer_problem_type(df , target) :
+
+        total_rows = len(df)
+        unique = df[target].nunique()
+        ratio = unique / total_rows
+
+        if df[target].dtype == "object" or df[target].dtype == "string" :
+            return "Classification"
+
+        elif total_rows <= 10 :
+            if ratio <= 0.4 :
+                return "Classification"
+            else :
+                return "Regression"
+
+        elif total_rows <= 100 :
+            if ratio <= 0.10 :
+                return "Classification"
+            else :
+                return "Regression"
+
+        elif ratio <= 0.05 :
+            return "Classification"
+
+        else :
+            return "Regression"
+
+
+
+
+
+
 def analyze_basic(df) :
     print(f"Number of Columns : {len(df.columns)}")
     print(f"Number of Rows : {len(df)}")
@@ -95,4 +128,12 @@ def analyze_ml(df , target) :
 
 
     print(f"Null values for each  columns : \n{df.isnull().sum()}")
-    
+    print()
+
+    problmem_type = infer_problem_type(df , target)
+    print(f"Problem type : {problmem_type}")
+    print()
+
+    if problmem_type == "Classification" :
+        print("Class Distribution Analysis :")
+        print(df[target].value_counts(normalize=True))

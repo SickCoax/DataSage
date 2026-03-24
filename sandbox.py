@@ -2,10 +2,11 @@ import pandas as pd
 import numpy as np
 
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Income Prediction\adult train.csv")
-df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Titanic-Dataset.csv")
+# df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Titanic-Dataset.csv")
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Fashion MNIST\fashion-mnist_train.csv")
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\creditcard.csv")
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\house_price.csv")
+df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\car_price_dataset_medium.csv")
 
 print(f"Number of Columns : {len(df.columns)}")
 print(f"Number of Rows : {len(df)}")
@@ -55,17 +56,25 @@ print()
 
 ## Making Logic to detect problem type(classification or regression)
 
-target = "Survived"
+target = "Price_USD"
 
 total_rows = len(df)
 unique = df[target].nunique()
 ratio = unique / total_rows
 
-if df[target].dtype == "object" :
+if df[target].dtype == "object" or df[target].dtype == "string" :
     print("Classifcation")
-elif ratio <= 0.05:
+elif total_rows <= 10 :
+    if ratio <= 0.4 :
+        print("Classification")
+    else :
+        print("Regression")
+elif total_rows <= 100 :
+    if ratio <= 0.10 :
+        print("Classification")
+    else :
+        print("Regression")
+elif ratio <= 0.05 :
     print("Classification")
 else :
     print("Regression")
-
-print(ratio)
