@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np 
+import matplotlib.pyplot as plt
 
 
 def infer_problem_type(df , target) :
@@ -117,7 +118,7 @@ def analyze_ml(df , target) :
         "null" , 
         "NULL" , 
         "None" , 
-        "nan" , 
+        "nan" ,     
         "-" , 
         "--" , 
         "unknown" , 
@@ -135,5 +136,15 @@ def analyze_ml(df , target) :
     print()
 
     if problmem_type == "Classification" :
-        print("Class Distribution Analysis :")
-        print(df[target].value_counts(normalize=True))
+        print("Class Distribution Analysis (Percentage) :")
+
+        distribution_count = df[target].value_counts(normalize=True)
+        distribution_percent =  distribution_count *100
+        print(distribution_percent)
+
+        distribution_percent.plot(kind="bar")
+        plt.xlabel("Classes")
+        plt.ylabel("Percent (%)")
+        plt.title("Class Distribution Analysis")
+        plt.grid()
+        plt.show()
