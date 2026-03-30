@@ -6,7 +6,8 @@ import numpy as np
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\Fashion MNIST\fashion-mnist_train.csv")
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\creditcard.csv")
 # df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\house_price.csv")
-df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\car_price_dataset_medium.csv")
+# df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\car_price_dataset_medium.csv")
+df = pd.read_csv(r"G:\My Drive\Codes\Learning\Python\Sample\insurance.csv")
 
 print(f"Number of Columns : {len(df.columns)}")
 print(f"Number of Rows : {len(df)}")
@@ -54,7 +55,7 @@ print(f"Number of Null values for each  columns : \n{df.isnull().sum()}")
 print()
 
 
-## Making Logic to detect problem type(classification or regression)
+# Making Logic to detect problem type(classification or regression)
 
 target = "Price_USD"
 
@@ -78,3 +79,4 @@ elif ratio <= 0.05 :
     print("Classification")
 else :
     print("Regression")
+

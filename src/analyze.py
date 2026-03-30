@@ -33,8 +33,6 @@ def infer_problem_type(df , target) :
 
 
 
-
-
 def analyze_basic(df) :
     print(f"Number of Columns : {len(df.columns)}")
     print(f"Number of Rows : {len(df)}")
@@ -148,3 +146,5 @@ def analyze_ml(df , target) :
         plt.title("Class Distribution Analysis")
         plt.grid()
         plt.show()
+
+
